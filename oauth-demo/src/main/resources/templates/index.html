@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth Demo - Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="card">
+    <h1>WELCOME</h1>
+
+    <div th:if="${authenticated}" class="status authenticated">
+        You are logged in
+    </div>
+    <div th:unless="${authenticated}" class="status unauthenticated">
+        You are NOT logged in
+    </div>
+
+    <div th:if="${authenticated}">
+        <a class="btn btn-login" th:href="@{/dashboard}">Go to Dashboard</a>
+        <br><br>
+        <a class="btn btn-logout" th:href="@{/logout}">Logout</a>
+    </div>
+
+    <div th:unless="${authenticated}">
+        <a class="btn btn-login" th:href="@{/oauth2/authorization/google}">Login</a>
+    </div>
+</div>
+</body>
+</html>
